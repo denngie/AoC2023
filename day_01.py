@@ -10,9 +10,9 @@ class Trebuchet:
 
     def add_input(self, input_data: str) -> None:
         """Take input data and store it per line"""
-        self.input_data = [line for line in input_data.split()]
+        self.input_data = list(input_data.split())
 
-    def read_calibration_values(self) -> int:
+    def read_calibration_values(self) -> None:
         """Extract calibration values as digits"""
         values: list[int] = []
         for line in self.input_data:
@@ -20,9 +20,9 @@ class Trebuchet:
             value = digits[0] + digits[-1]
             values.append(int(value))
 
-        return sum(values)
+        print(sum(values))
 
-    def read_calibration_values_with_letters(self) -> int:
+    def read_calibration_values_with_letters(self) -> None:
         """Extract calibration values with some of the digits spelled out as letters"""
         values: list[int] = []
         digit_dict = {
@@ -44,7 +44,7 @@ class Trebuchet:
             value = digits[0] + digits[-1]
             values.append(int(value))
 
-        return sum(values)
+        print(sum(values))
 
 
 def main() -> None:
@@ -52,8 +52,8 @@ def main() -> None:
     puzzle = Puzzle(day=1, year=2023)
     trebuchet = Trebuchet()
     trebuchet.add_input(puzzle.input_data)
-    print(trebuchet.read_calibration_values())
-    print(trebuchet.read_calibration_values_with_letters())
+    trebuchet.read_calibration_values()
+    trebuchet.read_calibration_values_with_letters()
 
 
 if __name__ == "__main__":

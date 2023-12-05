@@ -10,9 +10,9 @@ class GameCube:
 
     def add_input(self, input_data: str) -> None:
         """Take input data and store it per line"""
-        self.input_data = [line for line in input_data.split("\n")]
+        self.input_data = list(input_data.split("\n"))
 
-    def sum_valid_gameids(self) -> int:
+    def sum_valid_gameids(self) -> None:
         """Validate each cubeset"""
         gameid = 0
         games = []
@@ -35,9 +35,9 @@ class GameCube:
             else:
                 games.append(gameid)
 
-        return sum(games)
+        print(sum(games))
 
-    def sum_power_cubesets(self) -> int:
+    def sum_power_cubesets(self) -> None:
         """Calculate minimum cubeset power"""
         games = []
         for line in self.input_data:
@@ -55,7 +55,7 @@ class GameCube:
                         blue = value
             games.append(red * green * blue)
 
-        return sum(games)
+        print(sum(games))
 
 
 def main() -> None:
@@ -63,8 +63,8 @@ def main() -> None:
     puzzle = Puzzle(day=2, year=2023)
     gamecube = GameCube()
     gamecube.add_input(puzzle.input_data)
-    print(gamecube.sum_valid_gameids())
-    print(gamecube.sum_power_cubesets())
+    gamecube.sum_valid_gameids()
+    gamecube.sum_power_cubesets()
 
 
 if __name__ == "__main__":
